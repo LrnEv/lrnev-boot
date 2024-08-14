@@ -1,0 +1,61 @@
+# 版本定义
+[versions]
+kotlin = "1.9.24"  # Kotlin 编程语言版本
+springBoot = "3.3.2"  # Spring Boot 版本
+springDependencyManagement = "1.1.6"  # Spring Dependency Management 版本
+
+lombok = "1.18.34"  # Lombok 版本，用于简化 Java 代码
+mybatisPlus = "3.5.7"  # MyBatis Plus 版本，简化 MyBatis 使用
+knife4j = "4.4.0"  # Knife4j 版本，用于生成 API 文档
+annotations = "24.1.0"  # JetBrains Annotations 版本，用于类型安全的注解
+servletApi = "6.1.0"  # Jakarta Servlet API 版本
+commonsPool2 = "2.12.0"  # Apache Commons Pool 2 版本，提供对象池机制
+mapstruct = "1.6.0"  # MapStruct 版本，用于对象映射
+lombokMapstructBind = "0.2.0"  # MapStruct 的 Lombok 扩展版本
+hikariCP = "5.1.0"  # HikariCP 数据库连接池版本
+hutool = "5.8.31"  # Hutool 工具库版本
+
+
+# 依赖项定义
+[libraries]
+# Spring Boot 核心依赖
+springBootWeb = { group = "org.springframework.boot", name = "spring-boot-starter-web", version.ref = "springBoot" }  # Spring Boot Web 启动器
+springBootAop = { group = "org.springframework.boot", name = "spring-boot-starter-aop", version.ref = "springBoot" }  # Spring Boot AOP 支持
+springBootLog4j2 = { group = "org.springframework.boot", name = "spring-boot-starter-log4j2", version.ref = "springBoot" }  # Spring Boot Log4j2 日志记录支持
+springBootValidation = { group = "org.springframework.boot", name = "spring-boot-starter-validation", version.ref = "springBoot" }  # Spring Boot 验证支持
+springBootRedis = { group = "org.springframework.boot", name = "spring-boot-starter-data-redis", version.ref = "springBoot" }  # Spring Boot Redis 支持
+
+# ORM 和数据库相关
+mybatisPlus = { group = "com.baomidou", name = "mybatis-plus-spring-boot3-starter", version.ref = "mybatisPlus" }  # MyBatis Plus 的 Spring Boot 3 启动器
+hikariCP = { group = "com.zaxxer", name = "HikariCP", version.ref = "hikariCP" }  # HikariCP 数据库连接池
+
+# 文档和API工具
+knife4j = { group = "com.github.xiaoymin", name = "knife4j-openapi3-jakarta-spring-boot-starter", version.ref = "knife4j" }  # Knife4j 文档工具
+
+# Lombok
+lombok = { group = "org.projectlombok", name = "lombok", version.ref = "lombok" }  # Lombok 用于生成 getter 和 setter 等方法
+
+# MapStruct
+mapstruct = { group = "org.mapstruct", name = "mapstruct-processor", version.ref = "mapstruct" }  # MapStruct 运行时库
+mapstructProcessor = { group = "org.mapstruct", name = "mapstruct-processor", version.ref = "mapstruct" }  # MapStruct 注解处理器
+lombokMapstructBind = { group = "org.projectlombok", name = "lombok-mapstruct-binding", version.ref = "lombokMapstructBind" }  # MapStruct 的 MapStruct 和 Lombok 扩展
+
+# 其他工具库
+annotations = { group = "org.jetbrains", name = "annotations", version.ref = "annotations" }  # JetBrains Annotations
+servletApi = { group = "jakarta.servlet", name = "jakarta.servlet-api", version.ref = "servletApi" }  # Jakarta Servlet API
+commonsPool2 = { group = "org.apache.commons", name = "commons-pool2", version.ref = "commonsPool2" }  # Apache Commons Pool 2
+hutool = { group = "cn.hutool", name = "hutool-all", version.ref = "hutool" }  # Hutool 工具库
+
+
+# 相关依赖项的集合
+[bundles]
+springBootLrnEv = [
+    "springBootAop",
+    "springBootLog4j2",
+    "springBootValidation",
+    "springBootRedis"
+]
+mapstructLombok = [
+    "mapstruct",
+    "lombokMapstructBind"
+]
