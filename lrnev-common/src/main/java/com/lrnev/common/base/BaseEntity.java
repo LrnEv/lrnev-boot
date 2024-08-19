@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
  **/
 @Getter
 @Setter
-@ToString(exclude = {"remark"})
+@ToString(exclude = {"description"})
 public class BaseEntity {
     /**
      * 雪花算法Id
@@ -69,8 +69,8 @@ public class BaseEntity {
     private Integer deleted;
 
     /**
-     * 备注
+     * 描述/备注
      */
-    @TableField(value = "`remark`")
-    private String remark;
+    @TableField(value = "`description`")
+    private String description;
 }
