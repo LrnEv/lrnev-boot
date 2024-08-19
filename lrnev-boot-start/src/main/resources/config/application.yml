@@ -1,0 +1,6 @@
+# spring 配置
+spring:
+  profiles:
+    # 导入其他配置文件: spring.profile.include 的属性会覆盖默认属性，spring.profiles.active 会覆盖 spring.profile.include 和默认属性。
+    active:
+      - dev

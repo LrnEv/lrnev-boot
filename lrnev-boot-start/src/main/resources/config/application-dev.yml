@@ -1,0 +1,151 @@
+# spring 开发环境配置
+spring:
+  main:
+    allow-bean-definition-overriding: false
+  config:
+    activate:
+      on-profile: dev
+  # 数据库配置
+  datasource:
+    url: jdbc:mysql://rm-uf6cb57i44gl6t52uto.mysql.rds.aliyuncs.com:3306/mada_sys
+    username: mada
+    password: Mada2019
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  # redis
+  data:
+    redis:
+      host: 106.14.250.154
+      port: 6379
+      database: 0
+      password: mada2019
+      lettuce:
+        pool:
+          min-idle: 0
+          max-idle: 8
+          max-wait: -1ms
+          max-active: 16
+# 服务配置
+server:
+  port: 8090
+# 日志配置
+logging:
+  # Log4J2自定义配置的路径，放置到resources目录下
+  config: classpath:config/log4j2.xml
+# mybatis-plus 配置
+mybatis-plus:
+  mapper-locations: classpath:xml/*.xml
+  global-config:
+    db-config:
+      logic-delete-field: deleted # 全局逻辑删除字段名
+      logic-delete-value: 1 # 逻辑已删除值
+      logic-not-delete-value: 0 # 逻辑未删除值
+  configuration:
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+# springdoc-openapi 项目配置
+springdoc:
+  # OpenAPI 文档相关参数
+  api-docs:
+    # OpenAPI文档开关, true: 开启OpenAPI文档访问功能, false: 关闭。
+    enabled: true
+    # JSON格式的OpenAPI文档的访问路径
+    path: /v3/api-docs
+  # swagger-ui 配置
+  swagger-ui:
+    # path: 配置 swagger-ui.html/UI 界面的访问路径,默认为/swagger-ui.html
+    path: /swagger-ui.html
+    # tags-sorter: 接口文档中的tags排序规则,默认为alpha,可选值为alpha(按字母顺序排序)或as-is(按照在代码中定义的顺序排序)
+    tags-sorter: alpha
+    # 接口的排序
+    operations-sorter: alpha
+  # 删除无效的引用定义
+  remove-broken-reference-definitions: true
+  # 是否格式化输出的OpenAPI文档, 方便人类阅读
+  writer-with-default-pretty-printer: false
+  # 是否自动将类名生成为 Tag
+  auto-tag-classes: true
+  # 是否从 @ControllerAdvice 注解获取接口的响应信息.
+  override-with-generic-response: true
+  # 是否开启接口分组功能, 开启后, 一个App可以生成多个OpenAPI文档, 每个文档显示一部分接口。
+  api-docs.groups.enabled: true
+  # 分组配置 数组
+  group-configs:
+    # 分组名称
+    - group: 'system'
+      # 路径匹配规则, API 路径符合这些匹配规则才会包含到 OpenAPI 文档中, 多个规则用逗号分隔
+      paths-to-match: '/**'
+      # 扫描哪些包来生成 OpenAPI 文档, 多个包名用逗号分隔
+      packages-to-scan:
+        - com.mada.system.controller
+# knife4j的增强配置,不需要增强可以不配
+knife4j:
+  # 是否开启 Knife4j 增强模式
+  enable: true
+  # 自定义文档集合,该属性是数组
+  documents:
+    # 所属分组
+    - group: sys
+      # 类似于接口中的 tag ,对于自定义文档的分组
+      name: 测试自定义分组
+      # markdown 文件路径,可以是一个文件夹(classpath:markdowns/*)，也可以是单个文件(classpath:md/sign.md)
+      locations: classpath:markdown/*
+  # 前端Ui的个性化配置属性
+  setting:
+    # Ui默认显示语言,目前主要有两种:中文(zh-CN)、英文(en-US)
+    language: zh-CN
+    # 是否显示界面中 SwaggerModel 功能
+    enable-swagger-models: true
+    # 是否显示界面中"文档管理"功能
+    enable-document-manage: true
+    # 命名SwaggerModel名称
+    swagger-model-name: Dto集
+    # 是否开启界面中对某接口的版本控制,如果开启，后端变化后 Ui 界面会存在小蓝点
+    enable-version: false
+    # 是否在每个Debug调试栏后显示刷新变量按钮
+    enable-reload-cache-parameter: false
+    # 调试 Tab 是否显示 AfterScript 功能
+    enable-after-script: true
+    # 具体接口的过滤类型
+    enable-filter-multipart-api-method-type: POST
+    # 针对 RequestMapping 的接口请求类型,在不指定参数类型的情况下,如果不过滤,默认会显示7个类型的接口地址参数,如果开启此配置,默认展示一个 Post 类型的接口地址
+    enable-filter-multipart-apis: true
+    # 是否开启请求参数缓存
+    enable-request-cache: true
+    # 是否开启 Ui 界面中的搜索框
+    enable-search: true
+    # 是否开启动态参数调试功能
+    enable-dynamic-parameter: true
+    # 启用调试
+    enable-debug: true
+    # 显示OpenAPI规范
+    enable-open-api: true
+    # 显示服务分组
+    enable-group: true
+    # 是否开启自定义主页内容
+    enable-home-custom: false
+    # 主页内容 Markdown文件路径
+    home-custom-path: classpath:markdown/home.md
+    # 是否启用 Host
+    enable-host: false
+    # HOST 地址
+    enable-host-text: HOST 地址
+    # 是否显示Footer
+    enable-footer: true
+    # 是否开启自定义Footer
+    enable-footer-custom: false
+    # 自定义Footer内容
+    footer-custom-content: 自定义Footer内容
+  # 是否开启生产环境保护策略
+  production: false
+  # 是否开启一个默认的跨域配置,该功能配合自定义 Host 使用
+  cors: false
+  # 对 Knife4j 提供的资源提供 BasicHttp 校验,保护文档
+  basic:
+    # 关闭 BasicHttp 功能
+    enable: false
+    # basic 用户名
+    username: mada
+    # basic 密码
+    password: Mada@2019
+
+
+

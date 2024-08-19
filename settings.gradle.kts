@@ -1,2 +1,4 @@
 rootProject.name = "lrnev-boot"
-include("lrnev-core")
+include("lrnev-common")
+include("lrnev-rbac")
+include("lrnev-boot-start")

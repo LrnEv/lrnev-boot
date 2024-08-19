@@ -14,7 +14,7 @@ mapstruct = "1.6.0"  # MapStruct 版本，用于对象映射
 lombokMapstructBind = "0.2.0"  # MapStruct 的 Lombok 扩展版本
 hikariCP = "5.1.0"  # HikariCP 数据库连接池版本
 hutool = "5.8.31"  # Hutool 工具库版本
-
+p6spy = "1.9.1" # 数据库访问进行拦截和记录的工具
 
 # 依赖项定义
 [libraries]
@@ -28,6 +28,7 @@ springBootRedis = { group = "org.springframework.boot", name = "spring-boot-star
 # ORM 和数据库相关
 mybatisPlus = { group = "com.baomidou", name = "mybatis-plus-spring-boot3-starter", version.ref = "mybatisPlus" }  # MyBatis Plus 的 Spring Boot 3 启动器
 hikariCP = { group = "com.zaxxer", name = "HikariCP", version.ref = "hikariCP" }  # HikariCP 数据库连接池
+p6spy = { group = "com.github.gavlyukovskiy", name = "p6spy-spring-boot-starter", version.ref = "p6spy" } # 数据库访问进行拦截和记录的工具
 
 # 文档和API工具
 knife4j = { group = "com.github.xiaoymin", name = "knife4j-openapi3-jakarta-spring-boot-starter", version.ref = "knife4j" }  # Knife4j 文档工具
